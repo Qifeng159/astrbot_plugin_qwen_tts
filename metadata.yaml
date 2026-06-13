@@ -1,0 +1,8 @@
+name: astrbot_plugin_qwen_tts
+desc: 基于 Qwen3-TTS 声音克隆模型，用本地参考音频将文本转为语音
+help: 使用 /tts <文本> 生成克隆语音；/ttslang 查看支持语言；/ttsmodels 查看可用模型；/ttsconfig 查看配置状态。
+version: v1.1.0
+author: Qifeng
+repo: https://github.com/user/astrbot_plugin_qwen_tts
+display: Qwen3-TTS 模型支持
+astrbot_version: >=4.23.1
