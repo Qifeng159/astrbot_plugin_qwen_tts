@@ -1,0 +1,74 @@
+{
+    "tts_api_url": {
+        "type": "string",
+        "description": "语音克隆 API 地址",
+        "hint": "Qwen3-TTS WebUI 的声音克隆接口",
+        "default": "http://127.0.0.1:7860/qwenapi/v1/voice-clone"
+    },
+    "model_name": {
+        "type": "string",
+        "description": "使用的模型名称（声音克隆模型）",
+        "hint": "Base 系列模型支持声音克隆，如 Qwen/Qwen3-TTS-12Hz-1.7B-Base",
+        "default": "Qwen/Qwen3-TTS-12Hz-1.7B-Base"
+    },
+    "ref_audio_path": {
+        "type": "string",
+        "description": "参考音频文件路径（WAV 格式，10-30 秒干净人声效果最佳）",
+        "hint": "例如: C:/Users/xxx/voice_sample.wav。该音频将作为声音克隆的参考音色。",
+        "default": "C:\\AstrBot\\voive-sample\\ref_voice.wav"
+    },
+    "ref_text": {
+        "type": "string",
+        "description": "参考音频对应的文本内容（可选，留空则使用 x_vector_only 模式）",
+        "hint": "填写参考音频中说话的内容，有助于提高克隆质量",
+        "default": ""
+    },
+    "default_language": {
+        "type": "string",
+        "description": "默认合成语言",
+        "hint": "可选: chinese, english, japanese, korean, french, german, italian, portuguese, russian, spanish, auto",
+        "default": "chinese"
+    },
+    "request_timeout": {
+        "type": "int",
+        "description": "API 请求超时时间（秒）",
+        "hint": "生成较长的文本可能需要更长时间",
+        "default": 120
+    },
+    "whitelist": {
+        "type": "list",
+        "description": "用户白名单（为空时所有人可用）",
+        "hint": "填写允许使用 TTS 指令的用户 ID 列表，留空则不启用白名单",
+        "default": []
+    },
+    "voice_probability": {
+        "type": "float",
+        "description": "随机语音回复概率（0=关闭，1=总是）",
+        "hint": "例如 0.3 表示 30% 的普通消息随机触发语音回复。有白名单时仅白名单用户生效。",
+        "default": 0.0
+    },
+    "emotion_mode": {
+        "type": "bool",
+        "description": "情绪模式开关",
+        "hint": "开启后根据消息上下文自动匹配 emotion_audio 目录下的情绪参考音频。目录需放入 neutral.wav / happy.wav / sad.wav / angry.wav / surprised.wav。",
+        "default": false
+    },
+    "emotion_detect_method": {
+        "type": "string",
+        "description": "情绪检测方式",
+        "hint": "keyword: 关键词匹配（默认）；llm: 调用指定的模型提供商判断情绪（配合下方 emotion_llm_provider 使用）",
+        "default": "keyword"
+    },
+    "emotion_llm_provider": {
+        "type": "string",
+        "description": "情绪检测使用的 LLM 提供商 ID",
+        "hint": "留空则跟随当前会话的提供商；填写指定提供商 ID（如 provider_001）可固定使用某个模型。可在 WebUI 提供商管理页面查看已配置的提供商 ID。",
+        "default": ""
+    },
+    "show_tts_hint": {
+        "type": "bool",
+        "description": "显示 TTS 提示文本",
+        "hint": "开启后 /tts 指令会显示合成进度和 [TTS Clone] 标签；关闭则仅返回语音消息。",
+        "default": true
+    }
+}
